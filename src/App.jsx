@@ -62,7 +62,7 @@ export const App = () => {
     });
   };
 
-  const reverse = () => () => {
+  const reverse = () => {
     setFoodItems(prev => {
       const newItems = [...prev.items].reverse();
       const isInitial = newItems.join() === goodsFromServer.join();
@@ -77,7 +77,7 @@ export const App = () => {
   };
 
   const reset = () => {
-    setFoodItems(initialValues);
+    setFoodItems(() => ({ ...initialValues }));
   };
 
   return (
@@ -100,7 +100,7 @@ export const App = () => {
         </button>
 
         <button
-          onClick={reverse()}
+          onClick={reverse}
           type="button"
           className={`button ${foodItems.isReverse ? 'is-warning' : 'is-light'}`}
         >
